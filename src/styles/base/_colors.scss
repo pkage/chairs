@@ -1,0 +1,10 @@
+// colors!
+$accent: #8e44ad;
+
+@mixin accent-bg {
+	background-color: $accent;
+}
+
+@mixin accent-text {
+	color: $accent;
+}

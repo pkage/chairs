@@ -1,0 +1,58 @@
+$loader-color: white;
+.loader-container {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+@mixin preloader($diameter) {
+	// old skool h/v center
+	// avoid transforms because it'll be a pain in the butt with animations
+	position: absolute;
+	top: calc(50% - #{$diameter / 2});
+	left: calc(50% - #{$diameter / 2});
+
+	// sizing
+	width: $diameter;
+	height: $diameter;
+
+	// transform origin (for rotation)
+	transform-origin: 50% 50%;
+
+	// animation properties
+	animation-name: rotateLoader;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	// borders
+	margin: 0;
+	padding: 0;
+	border: 2px solid $loader-color;
+	border-radius: 50%;
+}
+
+.loader-outer {
+	@include preloader(80px);
+	border-bottom-color: rgba(0,0,0,0);
+	border-left-color: rgba(0,0,0,0);
+}
+
+.loader-inner {
+	@include preloader(60px);
+	border-top-color: rgba(0,0,0,0);
+	border-right-color: rgba(0,0,0,0);
+	animation-direction: reverse;
+}
+
+@keyframes rotateLoader {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

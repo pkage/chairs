@@ -1,0 +1,23 @@
+@import 'base/colors';
+
+.chair {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: flex-start;
+
+	padding: 5px 0 5px 0;
+	cursor: pointer;
+
+	> .chair-name {
+		@include accent-text;
+	}
+
+	> .chair-latlong {
+		color: #444;
+	}
+
+	&:hover {
+		background-color: #ddd;
+	}
+}
